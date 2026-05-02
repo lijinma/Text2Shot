@@ -75,7 +75,7 @@ body {
 **Layout pattern (adapt to content):**
 1. **Header**: badge + title + subtitle + divider
 2. **Callout box**: core thesis in yellow box with gold left border
-3. **Content cards**: numbered sections with colored accent circles
+3. **Content cards**: numbered sections in a unified QA block (one container, inline badges, no side circles)
 4. **Takeaway box**: dark background, key conclusions
 5. **Footer**: source attribution + brand
 
@@ -95,20 +95,23 @@ Arguments: `<input.html> <output.png> [scaleFactor=3] [viewportWidth=390]`
 
 The script automatically finds Playwright in the npx cache or global install.
 
-**If the script fails**, use this inline approach:
+**If the Node script fails**, try Python Playwright (works when installed via Homebrew/pip):
 ```bash
-NODE_PATH=$(find ~/.npm/_npx -name "index.mjs" -path "*/playwright/*" -exec dirname {} \; -exec dirname {} \; 2>/dev/null | head -1) \
-node -e "
-const pw = require('playwright');
-(async () => {
-  const browser = await pw.chromium.launch();
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 600 }, deviceScaleFactor: 3 });
-  const page = await ctx.newPage();
-  await page.goto('file:///tmp/infographic.html', { waitUntil: 'networkidle' });
-  await page.locator('body').screenshot({ path: 'OUTPUT.png', type: 'png' });
-  await browser.close();
-})();
-"
+python3 - <<'EOF'
+from playwright.sync_api import sync_playwright
+import os
+
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    ctx = browser.new_context(viewport={"width": 390, "height": 600}, device_scale_factor=3)
+    page = ctx.new_page()
+    page.goto("file:///tmp/infographic.html", wait_until="networkidle")
+    page.locator("body").screenshot(path="/tmp/output.png", type="png")
+    box = page.locator("body").bounding_box()
+    size = os.path.getsize("/tmp/output.png")
+    print(f"✅ {int(box['width']*3)}×{int(box['height']*3)}px  ({size//1024}KB)")
+    browser.close()
+EOF
 ```
 
 **Never use `npx playwright screenshot` CLI** — it doesn't support `deviceScaleFactor` and produces blurry 1x images.
