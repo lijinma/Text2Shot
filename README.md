@@ -110,7 +110,7 @@ Text2Shot/
 
 ## 致谢
 
-基于 [openclaw-skills](https://github.com/jincai/openclaw-skills) 中的 [infographic skill](https://github.com/jincai/openclaw-skills)，在此基础上扩展为独立工具。
+基于 [openclaw-skills](https://github.com/jincai/openclaw-skills) 中的 [infographic skill](https://github.com/jincai/openclaw-skills)，在此基础上扩展为独立工具。感谢远明。
 
 ## License
 
