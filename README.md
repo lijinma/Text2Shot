@@ -60,7 +60,7 @@ node scripts/screenshot.js <input.html> <output.png> [scaleFactor] [viewportWidt
 ## File structure
 
 ```
-infographic/
+Text2Shot/
 ├── SKILL.md                  # Instructions for Claude
 ├── README.md                 # This file
 ├── references/
@@ -83,6 +83,10 @@ infographic/
 3. **Consistent color coding** — 7 accent colors, one per section
 4. **Mobile-first** — designed for WeChat/Telegram/Twitter sharing
 5. **Self-contained** — single HTML file, no external dependencies
+
+## Credits
+
+Based on the [infographic skill](https://github.com/jincai/openclaw-skills) from [openclaw-skills](https://github.com/jincai/openclaw-skills). This project extends and adapts it as a standalone tool.
 
 ## License
 
