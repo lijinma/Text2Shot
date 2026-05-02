@@ -1,0 +1,14 @@
+{
+  "name": "text2shot",
+  "version": "1.0.0",
+  "description": "Generate professional infographic images from articles or structured content using HTML + Playwright",
+  "main": "scripts/screenshot.js",
+  "scripts": {
+    "screenshot": "node scripts/screenshot.js"
+  },
+  "keywords": ["infographic", "screenshot", "playwright", "html-to-image"],
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
