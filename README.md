@@ -2,6 +2,10 @@
 
 Generate professional, mobile-friendly infographic images from articles, tweets, or any structured content using HTML + Playwright high-DPI screenshot.
 
+## Example output
+
+<img src="assets/example-wechat.png" width="390" alt="Text2Shot example — WeChat style">
+
 ## What it does
 
 When you ask Claude things like:
